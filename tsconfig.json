@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
+    "target": "es2021",
     "module": "NodeNext",
     "baseUrl": "src",
     "outDir": "dist",
     "sourceMap": true,
     "noImplicitAny": true,
+    "strict": false,
   },
   "include": ["src/**/*"],
 }

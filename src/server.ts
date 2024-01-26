@@ -7,7 +7,7 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
-  console.log(`server is running in port ${port}`);
+  console.log(`server is running in  http://localhost:${port}`);
 });
 
 process.on('SINGINT', ()=>{
