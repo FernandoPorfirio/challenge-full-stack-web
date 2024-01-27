@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
 
-import { router } from "./app/router/index";
+import { router } from "./app/routes/index";
 
 export const app = express();
 
