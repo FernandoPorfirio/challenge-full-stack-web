@@ -11,7 +11,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
                     { name: 'name', type: 'varchar', length: '50'},
                     { name: 'email', type: 'varchar', length: '320'},
                     { name: 'password', type: 'varchar', length: '60'},
-                    { name: 'createdat', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
+                    { name: 'createdat', type: 'timestamp', default: 'now()' },
                     { name: 'actived', type: 'boolean', default: true },
                 ],
             })
@@ -23,7 +23,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
                 columns: [
                     { name: 'id', type: 'int', isPrimary: true, generationStrategy: 'increment' },
                     { name: 'name', type: 'varchar', length: '50'},
-                    { name: 'createdat', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
+                    { name: 'createdat', type: 'timestamp', default: 'now()' },
                 ],
             })
         );
@@ -34,7 +34,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
                 columns: [
                     { name: 'id', type: 'int', isPrimary: true, generationStrategy: 'increment' },
                     { name: 'name', type: 'varchar', length: '50'},
-                    { name: 'createdat', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
+                    { name: 'createdat', type: 'timestamp', default: 'now()' },
                 ],
             })
         );
@@ -134,7 +134,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
                     { name: 'state', type: 'int' },
                     { name: 'neighborhood', type: 'varchar', length: '100'},
                     { name: 'zip_code', type: 'varchar', length: '10'},
-                    { name: 'createdAt', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
+                    { name: 'createdAt', type: 'timestamp', default: 'now()' },
                 ],
                 foreignKeys: [
                     {
@@ -160,7 +160,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
                     { name: 'id', type: 'int', isPrimary: true, generationStrategy: 'increment' },
                     { name: 'name', type: 'varchar', length: '50'},
                     { name: 'institution_id', type: 'int' },
-                    { name: 'createdAt', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
+                    { name: 'createdAt', type: 'timestamp', default: 'now()' },
                 ],
                 foreignKeys: [
                     {
@@ -212,7 +212,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
                     { name: 'state', type: 'int' },
                     { name: 'neighborhood', type: 'varchar', length: '100'},
                     { name: 'zip_code', type: 'varchar', length: '10'},
-                    { name: 'createdAt', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
+                    { name: 'createdAt', type: 'timestamp', default: 'now()' },
                 ],
                 foreignKeys: [
                     {
