@@ -228,9 +228,8 @@ export class CreateTables1706358632771 implements MigrationInterface {
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
-          { name: 'start_date', type: 'date' },
-          { name: 'end_date', type: 'date' },
-          { name: 'course_id', type: 'int' }
+          { name: 'course_id', type: 'int' },
+          { name: 'createdAt', type: 'timestamp', default: 'now()' }
         ],
         foreignKeys: [
           {
