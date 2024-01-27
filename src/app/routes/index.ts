@@ -1,8 +1,7 @@
-import { Router } from 'express';
+import { Router } from "express";
 
 export const router = Router();
 
-router.get('/',(req,res)=>{
-  res.send('hi, iam alive!')
+router.get("/", (req, res) => {
+  res.send("hi, iam alive!");
 });
-
