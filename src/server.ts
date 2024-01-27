@@ -1,15 +1,15 @@
-import { app } from "./app";
-import dotenv from 'dotenv';
+import { app } from './app'
+import dotenv from 'dotenv'
 
-import { AppDataSource } from "./database/data-source";
+import { AppDataSource } from './database/data-source'
 
-dotenv.config();
+dotenv.config()
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
 AppDataSource.initialize().then(async () => {
-  console.log('database is running');
+  console.log('database is running')
   app.listen(port, () => {
-    console.log(`server is running in  http://localhost:${port}`);
-  });
-});
+    console.log(`server is running in  http://localhost:${port}`)
+  })
+})
