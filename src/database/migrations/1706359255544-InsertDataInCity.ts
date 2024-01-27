@@ -5576,7 +5576,7 @@ export class InsertDataInCity1706359255544 implements MigrationInterface {
             {id: 5300108,name: "Brasília", state_id: 53},
         ];
 
-        const values = cities.map(city => `(${city.id}, '${city.name}', '${city.state_id}')`).join(', ');
+        const values = cities.map(city => `(${city.id}, '${city.name.replace(/'/g, "''")}', '${city.state_id}')`).join(', ');
 
         await queryRunner.query(
             `INSERT INTO city (id, name, state_id) VALUES ${values}`
