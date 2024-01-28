@@ -1,4 +1,5 @@
 import { Request, Response, Router } from 'express'
+import { ConflictError } from '../helper/ApiError'
 import User from '../entities/User'
 import UserRepository from '../repositories/UserRepository'
 import IUser from '../interfaces/IUser'
@@ -14,9 +15,7 @@ class UserController {
     const existEmail = await UserRepository.findUserByEmail(email)
 
     if (existEmail) {
-      return res.status(409).json({
-        error: 'Email address already exists'
-      })
+      throw new ConflictError('Email address already exists')
     }
 
     await UserRepository.createUser(req.body)

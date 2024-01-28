@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
 dotenv.config()
-// import IToken from '../interfaces/IToken'
 
 export default function authMiddleware(
   req: Request,
@@ -21,7 +20,7 @@ export default function authMiddleware(
   try {
     jwt.verify(token, process.env.JWT_SECRET || 'secret')
     next()
-  } catch{
+  } catch {
     return res.status(401).json({ error: 'Invalid token' })
   }
 }
