@@ -7,8 +7,9 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-class UserController {
+class AuthController {
   async auth(req: Request, res: Response): Promise<Response> {
+
     const { email, password } = req.body
     const user = await UserRepository.findUserByEmail(email)
 
@@ -37,4 +38,4 @@ class UserController {
     })
   }
 }
-export default new UserController()
+export default new AuthController()
