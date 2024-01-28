@@ -1,12 +1,11 @@
-import { Request, Response, Router } from 'express'
+import { Request, Response } from 'express'
 import UserRepository from '../repositories/UserRepository'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
-const authRouter = Router()
-
-authRouter.post('/', async (req: Request, res: Response): Promise<Response> => {
-  const { email, password } = req.body
+class UserController {
+  async auth(req: Request, res: Response): Promise<Response> {
+    const { email, password } = req.body
   const user = await UserRepository.findUserByEmail(email)
 
   if (!user) {
@@ -32,6 +31,6 @@ authRouter.post('/', async (req: Request, res: Response): Promise<Response> => {
     },
     token
   })
-})
-
-export default authRouter
+  }
+}
+export default new UserController()
