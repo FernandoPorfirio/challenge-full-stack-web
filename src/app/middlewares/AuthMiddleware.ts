@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
 
+dotenv.config()
 // import IToken from '../interfaces/IToken'
 
 export default function authMiddleware(
@@ -17,7 +19,7 @@ export default function authMiddleware(
   const token = authorization.replace('Bearer', '').trim()
 
   try {
-    jwt.verify(token, '@Bc1')
+    jwt.verify(token, process.env.JWT_SECRET || 'secret')
     next()
   } catch{
     return res.status(401).json({ error: 'Invalid token' })

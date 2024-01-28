@@ -2,6 +2,9 @@ import { Request, Response } from 'express'
 import UserRepository from '../repositories/UserRepository'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 class UserController {
   async auth(req: Request, res: Response): Promise<Response> {
@@ -22,7 +25,7 @@ class UserController {
     })
   }
 
-  const token = jwt.sign({ id: user.id }, '@Bc1', { expiresIn: '1d' })
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'secret', { expiresIn: '1d' })
 
   return res.status(200).json({
     user: {
