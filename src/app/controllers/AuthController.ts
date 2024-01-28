@@ -23,7 +23,7 @@ authRouter.post('/', async (req: Request, res: Response): Promise<Response> => {
     })
   }
 
-  const token = jwt.sign({ id: user.id }, 'GSA', { expiresIn: '1d' })
+  const token = jwt.sign({ id: user.id }, '@Bc1', { expiresIn: '1d' })
 
   return res.status(200).json({
     user: {
