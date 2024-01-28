@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import authMiddleware from '../middlewares/AuthMiddleware'
+import authMiddleware from '../middlewares/authMiddleware'
 
 import UserController from '../controllers/UserController'
 
