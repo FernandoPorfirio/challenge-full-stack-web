@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
 dotenv.config()
-// import IToken from '../interfaces/IToken'
 
 export default function authMiddleware(
   req: Request,
