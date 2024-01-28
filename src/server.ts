@@ -1,4 +1,4 @@
-import 'express-async-errors';
+import 'express-async-errors'
 import { app } from './app'
 import dotenv from 'dotenv'
 import { AppDataSource } from './database/data-source'
