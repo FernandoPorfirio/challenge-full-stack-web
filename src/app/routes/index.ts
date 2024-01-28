@@ -1,7 +1,15 @@
 import { Router } from 'express'
 
-export const router = Router()
+import AuthRouter from './authRoutes'
+import UserRouter from './userRoutes'
 
-router.get('/', (req, res) => {
+const router = Router()
+
+router.get('/', (_req, res) => {
   res.send('hi, iam alive!')
 })
+
+router.use('/auth', AuthRouter)
+router.use('/user', UserRouter)
+
+export default router

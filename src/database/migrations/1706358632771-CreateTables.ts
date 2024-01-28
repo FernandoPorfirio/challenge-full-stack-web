@@ -13,7 +13,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
-          { name: 'email', type: 'varchar', length: '320' },
+          { name: 'email', type: 'varchar', length: '320', isUnique: true },
           { name: 'password', type: 'varchar', length: '60' },
           { name: 'createdat', type: 'timestamp', default: 'now()' },
           { name: 'actived', type: 'boolean', default: true }
@@ -258,7 +258,6 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'ra',
             type: 'varchar',
             length: '15',
-            isNullable: false,
             isUnique: true
           },
           { name: 'cpf', type: 'varchar', length: '14' },
@@ -266,14 +265,12 @@ export class CreateTables1706358632771 implements MigrationInterface {
           {
             name: 'whatsappNumber',
             type: 'varchar',
-            length: '15',
-            isNullable: true
+            length: '15'
           },
           {
             name: 'contactNumber',
             type: 'varchar',
-            length: '15',
-            isNullable: true
+            length: '15'
           },
           { name: 'street', type: 'varchar', length: '255' },
           { name: 'number', type: 'varchar', length: '20' },
