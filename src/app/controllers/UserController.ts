@@ -12,7 +12,7 @@ userRouter.get('/', async (_req: Request, res: Response): Promise<Response> => {
 
 userRouter.post('/', async (req: Request, res: Response): Promise<Response> => {
   const { id, name, email } = req.body
-  const existEmail = await UserRepository.isEmailInUse (email)
+  const existEmail = await UserRepository.findUserByEmail (email)
 
   if (existEmail) {
     return res.status(409).json({
