@@ -32,7 +32,7 @@ export const AppDataSource = new DataSource({
   database: process.env.TYPEORM_DATABASE,
   synchronize: true,
   logging: false,
-  model: [
+  entities: [
     AccessLevel,
     AccessLevelTransaction,
     City,
