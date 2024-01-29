@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn
+} from 'typeorm'
+
+import State from './State'
 
 @Entity('city')
 class City {
@@ -8,8 +16,11 @@ class City {
   @Column({ type: 'varchar', length: 50 })
   name: string
 
-  @Column({ type: 'int' })
-  state_id: number
+  @ManyToOne(() => State, (state) => state.city)
+  @JoinColumn({
+    name: 'state_id'
+  })
+  state: State
 }
 
 export default City

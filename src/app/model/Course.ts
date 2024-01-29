@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm'
+import Classs from './Classs'
+import Institution from './Institution'
 
 @Entity('course')
 class Course {
@@ -8,11 +10,18 @@ class Course {
   @Column({ type: 'varchar', length: 50 })
   name: string
 
-  @Column({ type: 'int' })
-  institution_id: number
-
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date
+
+  @OneToMany(() => Classs, (classs) => classs.course)
+  classs: Classs[]
+
+  @ManyToOne(() => Institution, (institution) => institution.course)
+  @JoinColumn({
+    name: 'institution_id'
+  })
+  institution: Institution
+
 }
 
 export default Course

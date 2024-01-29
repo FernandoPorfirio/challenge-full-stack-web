@@ -1,4 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+  ManyToOne
+} from 'typeorm'
+import Student from './Student'
+import Classs from './Classs'
+import EnrolmentStatus from './EnrolmentStatus'
 
 @Entity('enrolment')
 class Enrolment {
@@ -11,14 +20,21 @@ class Enrolment {
   @Column({ type: 'date' })
   date: Date
 
-  @Column({ type: 'int' })
-  student_id: number
+  @ManyToOne(() => Classs, (classs) => classs.enrolment)
+  @JoinColumn({
+    name: 'class_id'
+  })
+  classs: Classs
 
-  @Column({ type: 'int' })
-  class_id: number
+  @ManyToOne(() => EnrolmentStatus, { eager: true })
+  @JoinColumn({ name: 'status_id' })
+  enrolmentStatus: EnrolmentStatus
 
-  @Column({ type: 'int' })
-  status_id: number
+  @ManyToOne(() => Student, (student) => student.enrolment)
+  @JoinColumn({
+    name: 'student_id'
+  })
+  student: Student
 }
 
 export default Enrolment

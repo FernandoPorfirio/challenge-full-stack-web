@@ -1,5 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, ManyToMany, JoinTable} from 'typeorm'
 import bcrypt from 'bcryptjs'
+
+import AccessLevel from './AccessLevel'
 
 @Entity('user')
 class User {
@@ -26,6 +28,20 @@ class User {
   hashPassword() {
     this.password = bcrypt.hashSync(this.password, 8)
   }
+
+  @ManyToMany(() => AccessLevel, accesLevel => accesLevel.user)
+  @JoinTable({
+    name: 'useraccesslevel',
+    joinColumn: {
+      name: 'accesslevel_id',
+      referencedColumnName: 'id'
+    },
+    inverseJoinColumn: {
+      name: 'user_id',
+      referencedColumnName: 'id'
+    }
+  })
+  accesLevel: AccessLevel[]
 }
 
 export default User

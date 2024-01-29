@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import City from './City'
 
 @Entity('state')
 class State {
@@ -10,6 +11,9 @@ class State {
 
   @Column({ type: 'char', length: 2 })
   abbreviation: string
+
+  @OneToMany(() => City, (city) => city.state)
+  city: City[]
 }
 
 export default State

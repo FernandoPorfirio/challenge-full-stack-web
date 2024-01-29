@@ -1,4 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn
+} from 'typeorm'
+import Course from './Course'
+import City from './City'
+import State from './State'
 
 @Entity('institution')
 class Institution {
@@ -23,11 +33,13 @@ class Institution {
   @Column({ type: 'varchar', length: 20 })
   number: string
 
-  @Column({ type: 'int' })
-  city: number
+  @ManyToOne(() => City, { eager: true })
+  @JoinColumn({ name: 'city' })
+  city: City
 
-  @Column({ type: 'int' })
-  state: number
+  @ManyToOne(() => State, { eager: true })
+  @JoinColumn({ name: 'state' })
+  state: State
 
   @Column({ type: 'varchar', length: 100 })
   neighborhood: string
@@ -37,6 +49,9 @@ class Institution {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date
+
+  @OneToMany(() => Course, (course) => course.institution)
+  course: Course[]
 }
 
 export default Institution

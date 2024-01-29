@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm'
+
+import AccessLevel from './AccessLevel'
 
 @Entity('transaction')
 class Transaction {
@@ -10,6 +12,20 @@ class Transaction {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdat: Date
+
+  @ManyToMany(() => AccessLevel, accesLevel => accesLevel.transaction)
+  @JoinTable({
+    name: 'accessleveltransaction',
+    joinColumn: {
+      name: 'accesslevel_id',
+      referencedColumnName: 'id'
+    },
+    inverseJoinColumn: {
+      name: 'transaction_id',
+      referencedColumnName: 'id'
+    }
+  })
+  accesLevel: AccessLevel[]
 }
 
 export default Transaction
