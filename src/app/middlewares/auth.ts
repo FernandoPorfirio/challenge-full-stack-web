@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-export default function authMiddleware(
+export default function auth(
   req: Request,
   res: Response,
   next: NextFunction
