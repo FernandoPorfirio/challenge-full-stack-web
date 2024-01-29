@@ -45,7 +45,6 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
-            generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
           { name: 'createdat', type: 'timestamp', default: 'now()' }
