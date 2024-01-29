@@ -2,7 +2,7 @@ import { Request, Response, Router } from 'express'
 import * as yup from 'yup'
 
 import { ConflictError, BadRequestError } from '../helper/ApiError'
-// import User from '../entities/User'
+// import User from '../model/User'
 import UserRepository from '../repositories/UserRepository'
 // import IUser from '../interfaces/IUser'
 
