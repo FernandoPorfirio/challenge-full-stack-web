@@ -7,23 +7,21 @@ import { InsertDataInState1706359245735 } from './migrations/1706359245735-Inser
 import { InsertDataInCity1706359255544 } from './migrations/1706359255544-InsertDataInCity'
 import { InsertDataInEnrolmentStatus1706359269830 } from './migrations/1706359269830-InsertDataInEnrolmentStatus'
 
-import AccessLevel from '../app/entities/AccessLevel'
-import AccessLevelTransaction from '../app/entities/AccessLevelTransaction'
-import City from '../app/entities/City'
-import Class from '../app/entities/Class'
-import Course from '../app/entities/Course'
-import Enrolment from '../app/entities/Enrolment'
-import EnrolmentStatus from '../app/entities/EnrolmentStatus'
-import Institution from '../app/entities/Institution'
-import State from '../app/entities/State'
-import Student from '../app/entities/Student'
-import Transaction from '../app/entities/Transaction'
-import User from '../app/entities/User'
-import UserAccessLevel from '../app/entities/UserAccessLevel'
-
+import AccessLevel from '../app/model/AccessLevel'
+import AccessLevelTransaction from '../app/model/AccessLevelTransaction'
+import City from '../app/model/City'
+import Class from '../app/model/Class'
+import Course from '../app/model/Course'
+import Enrolment from '../app/model/Enrolment'
+import EnrolmentStatus from '../app/model/EnrolmentStatus'
+import Institution from '../app/model/Institution'
+import State from '../app/model/State'
+import Student from '../app/model/Student'
+import Transaction from '../app/model/Transaction'
+import User from '../app/model/User'
+import UserAccessLevel from '../app/model/UserAccessLevel'
 
 dotenv.config()
-
 
 export const AppDataSource = new DataSource({
   type: process.env.TYPEORM_CONNECTION as any,
