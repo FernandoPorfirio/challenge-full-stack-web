@@ -1,16 +1,34 @@
 import { Request, Response, NextFunction } from 'express'
 import { ApiError } from '../helper/api-error.helper'
 
-export default function errorHandler(
-  err: Error & Partial<ApiError>,
-  _req: Request,
-  res: Response,
-  _next: NextFunction
-) {
-  const statusCode = err.statusCode ?? 500
-  const message = err.statusCode
-    ? err.message ?? 'Internal server Error!'
-    : 'Internal server Error!'
+class ErrorHandlerMiddleware {
+  private defaultStatusCode: number
+  private defaultMessage: string
 
-  return res.status(statusCode).json({ message })
+  constructor(
+    defaultStatusCode: number = 500,
+    defaultMessage: string = 'Internal server Error!'
+  ) {
+    this.defaultStatusCode = defaultStatusCode
+    this.defaultMessage = defaultMessage
+  }
+
+  public handle(
+    err: Error & Partial<ApiError>,
+    _req: Request,
+    res: Response,
+    _next: NextFunction
+  ) {
+    let statusCode = err.statusCode ?? this.defaultStatusCode
+    let message = err.message ?? this.defaultMessage
+
+    if (err instanceof ApiError) {
+      statusCode = err.statusCode
+      message = err.message
+    }
+
+    return res.status(statusCode).json({ message })
+  }
 }
+
+export default new ErrorHandlerMiddleware()
