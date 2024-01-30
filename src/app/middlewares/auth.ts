@@ -2,9 +2,11 @@ import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
+import { UnauthorizedError } from '../helper/ApiError';
+
 dotenv.config()
 
-export default function authMiddleware(
+export default function auth(
   req: Request,
   res: Response,
   next: NextFunction
@@ -12,7 +14,7 @@ export default function authMiddleware(
   const { authorization } = req.headers
 
   if (!authorization) {
-    return res.status(401).json({ error: 'Invalid token' })
+    throw new UnauthorizedError('Invalid token')
   }
 
   const token = authorization.replace('Bearer', '').trim()
@@ -21,6 +23,6 @@ export default function authMiddleware(
     jwt.verify(token, process.env.JWT_SECRET || 'secret')
     next()
   } catch {
-    return res.status(401).json({ error: 'Invalid token' })
+    throw new UnauthorizedError('Invalid token')
   }
 }

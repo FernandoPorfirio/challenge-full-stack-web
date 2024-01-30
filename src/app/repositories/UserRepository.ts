@@ -20,4 +20,9 @@ const findUserByEmail = async (email: string): Promise<IUser | null> => {
   return user
 }
 
-export default { getUser, createUser, findUserByEmail }
+const findUserWithTransaction = async (id: number): Promise<any | null> => {
+  const user = await userRepository.findOne({ where: { id }, relations: ['accesLevel.transaction'] })
+  return user
+}
+
+export default { getUser, createUser, findUserByEmail, findUserWithTransaction }

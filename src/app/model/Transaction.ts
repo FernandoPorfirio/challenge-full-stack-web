@@ -17,11 +17,11 @@ class Transaction {
   @JoinTable({
     name: 'accessleveltransaction',
     joinColumn: {
-      name: 'accesslevel_id',
+      name: 'transaction_id',
       referencedColumnName: 'id'
     },
     inverseJoinColumn: {
-      name: 'transaction_id',
+      name: 'accesslevel_id',
       referencedColumnName: 'id'
     }
   })

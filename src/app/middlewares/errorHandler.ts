@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { ApiError } from '../helper/ApiError'
 
-export default function errorHandlerMiddleware(
+export default function errorHandler(
   err: Error & Partial<ApiError>,
   _req: Request,
   res: Response,

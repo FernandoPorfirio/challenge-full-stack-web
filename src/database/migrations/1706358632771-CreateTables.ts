@@ -10,6 +10,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
@@ -29,6 +30,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
@@ -45,7 +47,6 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
-            generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
           { name: 'createdat', type: 'timestamp', default: 'now()' }
@@ -61,6 +62,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'user_id', type: 'int' },
@@ -91,6 +93,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'accesslevel_id', type: 'int' },
@@ -121,7 +124,6 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
-            generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
           { name: 'abreviation', type: 'char', length: '2' }
@@ -137,7 +139,6 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
-            generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
           { name: 'state_id', type: 'int' }
@@ -161,6 +162,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
@@ -200,6 +202,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
@@ -225,6 +228,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
@@ -250,6 +254,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
@@ -305,6 +310,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' }
@@ -320,6 +326,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment'
           },
           { name: 'name', type: 'varchar', length: '50' },
