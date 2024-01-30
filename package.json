@@ -8,8 +8,8 @@
     "start": "ts-node src/server.ts",
     "dev": "nodemon --exec ts-node src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "typeorm:migrate": "typeorm-ts-node-commonjs migration:run --dir src/database/migrations",
-    "typeorm:revert": "typeorm-ts-node-commonjs migration:revert --dir src/database/migrations"
+    "typeorm:migrate": "typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts",
+    "typeorm:revert": "typeorm-ts-node-commonjs migration:revert -d src/database/data-source.ts"
   },
   "author": "Fernando Porfirio",
   "license": "ISC",
