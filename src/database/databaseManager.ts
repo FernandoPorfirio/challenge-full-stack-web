@@ -17,6 +17,7 @@ class DatabaseManager {
     this.dataSource = new DataSource({
       ...this.datasourceOptions,
       entities: [],
+      migrations: [],
     });
 
     await this.dataSource
