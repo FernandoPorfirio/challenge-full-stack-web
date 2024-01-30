@@ -1,8 +1,11 @@
+import 'express-async-errors'
 import { DataSourceOptions } from 'typeorm'
 import app from './app'
 
 import dotenv from 'dotenv'
 import DatabaseManager from '../src/database/databaseManager'
+
+import errorHandler from './shared/middleware/error-handler.middleware'
 
 dotenv.config()
 
@@ -22,6 +25,7 @@ const datasourceOptions: DataSourceOptions = {
 const dbManager: DatabaseManager = new DatabaseManager(datasourceOptions)
 dbManager.initializeDataSource()
 
+app.use(errorHandler.handle.bind(errorHandler))
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 })
