@@ -1,32 +1,34 @@
-import "reflect-metadata";
-import { DataSource, DataSourceOptions } from "typeorm";
+import 'reflect-metadata'
+import { DataSource, DataSourceOptions } from 'typeorm'
 
 class DatabaseManager {
-  private datasourceOptions: DataSourceOptions;
-  private dataSource: DataSource;
+  private datasourceOptions: DataSourceOptions
+  private dataSource: DataSource
 
   constructor(private config: DataSourceOptions) {
-    this.datasourceOptions = config;
+    this.datasourceOptions = config
   }
 
   getDataSource() {
-    return this.dataSource;
+    return this.dataSource
   }
 
-  async initializeDataSource() {
+  public async initializeDataSource() {
     this.dataSource = new DataSource({
       ...this.datasourceOptions,
-      entities: [],
-      migrations: [],
-    });
+      entities: []
+    })
 
     await this.dataSource
       .initialize()
       .then(async () => {
-        console.log("Data source initialized");
+        console.log('Data source initialized')
       })
-      .catch((error) => console.log(error));
+      .catch(async (error) => {
+        console.error('Error creating database:', error)
+        throw error
+      })
   }
 }
 
-export default DatabaseManager;
+export default DatabaseManager
