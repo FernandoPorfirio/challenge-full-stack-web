@@ -47,6 +47,10 @@ class UserService {
     const { id, name } = userData;
     return { id, name, email };
   }
+
+  async findUserWithTransaction(id: number) {
+    return UserRepository.findUserWithTransaction(id);
+  }
 }
 
 export default new UserService();
