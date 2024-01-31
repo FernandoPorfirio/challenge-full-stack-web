@@ -1,9 +1,16 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, BaseEntity } from 'typeorm'
 
 import User from '../user/user.model'
 import Transaction from '../transaction/transaction.model'
+
+export interface IAccessLevel {
+  id?: number
+  name: string
+  createdat: Date
+}
+
 @Entity('accesslevel')
-class AccessLevel {
+export default class AccessLevel extends BaseEntity implements IAccessLevel {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number
 
@@ -19,5 +26,3 @@ class AccessLevel {
   @ManyToMany(() => Transaction, transaction => transaction.accesLevel)
   transaction: Transaction[]
 }
-
-export default AccessLevel

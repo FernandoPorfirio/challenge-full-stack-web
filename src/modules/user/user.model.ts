@@ -1,10 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, ManyToMany, JoinTable} from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, ManyToMany, JoinTable, BaseEntity} from 'typeorm'
 import bcrypt from 'bcryptjs'
 
 import AccessLevel from '../accessLevel/accessLevel.model'
 
+export interface IUser {
+  id?: number
+  name: string
+  email: string
+  password: string
+  createdat: Date
+  actived: boolean
+}
+
 @Entity('user')
-class User {
+export default class User extends BaseEntity implements IUser  {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number
 
@@ -43,5 +52,3 @@ class User {
   })
   accesLevel: AccessLevel[]
 }
-
-export default User
