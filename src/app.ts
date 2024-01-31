@@ -1,23 +1,14 @@
-import 'reflect-metadata'
-import express from 'express'
-import bodyParser from 'body-parser'
-import cookieParser from 'cookie-parser'
-import compression from 'compression'
-import cors from 'cors'
+import express, { Express } from 'express'
+import apiRoutes from './modules/routes'
 
-import router from './app/routes/index'
-
-export const app = express()
-
-app.use(
-  cors({
-    credentials: true
-  })
-)
+const app: Express = express()
 
 app.use(express.json())
-app.use(compression())
-app.use(cookieParser())
-app.use(bodyParser.json())
 
-app.use(router)
+app.use('/api/v1', apiRoutes)
+
+app.get('/', async (_req, res) => {
+  res.send('hi, iam alive!')
+})
+
+export default app

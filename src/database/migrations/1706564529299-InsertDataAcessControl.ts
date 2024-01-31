@@ -1,4 +1,4 @@
-import UserEntity from '../../app/model/User'
+import UserEntity from '../../modules/user/user.model'
 import { MigrationInterface, QueryRunner } from 'typeorm'
 
 import bcrypt from 'bcryptjs'
