@@ -1,8 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt, { JwtPayload } from 'jsonwebtoken'
-
-import UserService from '../services/UserService'
-import { UnauthorizedError } from '../helper/ApiError'
+import User from '../../modules/user/user.model'
+import { UnauthorizedError } from '../helper/api-error.helper'
 
 async function validateUserTransaction(
   authorization: string | undefined,
@@ -22,9 +21,12 @@ async function validateUserTransaction(
     throw new UnauthorizedError('Invalid token')
   }
 
-  const userId = decodedToken.payload.id
+  const id: number = parseInt(decodedToken.payload.id, 10)
 
-  const user = await UserService.findUserWithTransaction(userId)
+  const user = await User.findOne({
+    where: { id },
+    relations: ['accesLevel.transaction']
+  })
 
   return user.accesLevel.some((accessLevel: { transaction: any[] }) =>
     accessLevel.transaction.some(
@@ -33,36 +35,27 @@ async function validateUserTransaction(
   )
 }
 
-export async function getUser(
-  req: Request,
-  _res: Response,
-  next: NextFunction
-) {
-  const hasPermission = await validateUserTransaction(
-    req.headers.authorization,
-    2
-  )
-
-  if (!hasPermission) {
-    throw new UnauthorizedError(
-      'Authorization failed or user lacks necessary permissions.'
+function PermissionMiddleware(transactionIdToFind: number) {
+  return async function (req: Request, res: Response, next: NextFunction) {
+    const hasPermission = await validateUserTransaction(
+      req.headers.authorization,
+      transactionIdToFind
     )
-  }
 
-  next()
+    if (!hasPermission) {
+      throw new UnauthorizedError(
+        'Authorization failed or user lacks necessary permissions.'
+      )
+    }
+
+    next()
+  }
 }
 
-export async function createUser(req: Request, res: Response, next: NextFunction) {
-  const hasPermission = await validateUserTransaction(
-    req.headers.authorization,
-    3
-  )
-
-  if (!hasPermission) {
-    throw new UnauthorizedError(
-      'Authorization failed or user lacks necessary permissions.'
-    )
-  }
-
-  next()
-}
+export const createUser = PermissionMiddleware(1)
+export const getAllUser = PermissionMiddleware(2)
+export const createStudent = PermissionMiddleware(3)
+export const getAllStudent = PermissionMiddleware(4)
+export const getSingleStudent = PermissionMiddleware(5)
+export const updateStudent = PermissionMiddleware(6)
+export const deleteStudent = PermissionMiddleware(7)
