@@ -26,15 +26,19 @@ export class InsertDataAcessControl1706564529299 implements MigrationInterface {
     )
 
     await queryRunner.query(
-      `INSERT INTO transaction (id, name, createdat) VALUES (4, 'getStudent', CURRENT_TIMESTAMP)`
+      `INSERT INTO transaction (id, name, createdat) VALUES (4, 'getAllStudent', CURRENT_TIMESTAMP)`
     )
 
     await queryRunner.query(
-      `INSERT INTO transaction (id, name, createdat) VALUES (5, 'findStudent', CURRENT_TIMESTAMP)`
+      `INSERT INTO transaction (id, name, createdat) VALUES (5, 'getSingleStudent', CURRENT_TIMESTAMP)`
     )
 
     await queryRunner.query(
-      `INSERT INTO transaction (id, name, createdat) VALUES (6, 'removeStudent', CURRENT_TIMESTAMP)`
+      `INSERT INTO transaction (id, name, createdat) VALUES (6, 'updateStudent', CURRENT_TIMESTAMP)`
+    )
+
+    await queryRunner.query(
+      `INSERT INTO transaction (id, name, createdat) VALUES (7, 'deleteStudent', CURRENT_TIMESTAMP)`
     )
 
     await queryRunner.query(
@@ -43,22 +47,6 @@ export class InsertDataAcessControl1706564529299 implements MigrationInterface {
 
     await queryRunner.query(
       `INSERT INTO accessleveltransaction (accesslevel_id, transaction_id) VALUES (1, 2)`
-    )
-
-    await queryRunner.query(
-      `INSERT INTO accessleveltransaction (accesslevel_id, transaction_id) VALUES (1, 3)`
-    )
-
-    await queryRunner.query(
-      `INSERT INTO accessleveltransaction (accesslevel_id, transaction_id) VALUES (1, 4)`
-    )
-
-    await queryRunner.query(
-      `INSERT INTO accessleveltransaction (accesslevel_id, transaction_id) VALUES (1, 5)`
-    )
-
-    await queryRunner.query(
-      `INSERT INTO accessleveltransaction (accesslevel_id, transaction_id) VALUES (1, 6)`
     )
 
     await queryRunner.query(
@@ -75,6 +63,10 @@ export class InsertDataAcessControl1706564529299 implements MigrationInterface {
 
     await queryRunner.query(
       `INSERT INTO accessleveltransaction (accesslevel_id, transaction_id) VALUES (2, 6)`
+    )
+
+    await queryRunner.query(
+      `INSERT INTO accessleveltransaction (accesslevel_id, transaction_id) VALUES (2, 7)`
     )
 
     const resultAdmUserInsert = await queryRunner.manager.save(UserEntity, {

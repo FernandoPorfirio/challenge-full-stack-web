@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm'
 
-export class InsertDataInEnrolmentStatus1706359269830
+export class CreateTriggerRA1706359269830
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
