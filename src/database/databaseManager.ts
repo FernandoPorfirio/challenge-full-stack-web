@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import { Client } from 'pg'
 import { DataSource, DataSourceOptions } from 'typeorm'
+import { User, AccessLevel, Transaction } from "../modules/models";
 
 class DatabaseManager {
   private datasourceOptions: DataSourceOptions
@@ -17,7 +17,7 @@ class DatabaseManager {
   async initializeDataSource() {
     this.dataSource = new DataSource({
       ...this.datasourceOptions,
-      entities: [],
+      entities: [User, AccessLevel, Transaction],
       migrations: []
     })
 
