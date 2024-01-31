@@ -46,7 +46,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
           {
             name: 'id',
             type: 'int',
-            isPrimary: true,
+            isPrimary: true
           },
           { name: 'name', type: 'varchar', length: '50' },
           { name: 'createdat', type: 'timestamp', default: 'now()' }
@@ -123,7 +123,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
           {
             name: 'id',
             type: 'int',
-            isPrimary: true,
+            isPrimary: true
           },
           { name: 'name', type: 'varchar', length: '50' },
           { name: 'abreviation', type: 'char', length: '2' }
@@ -138,7 +138,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
           {
             name: 'id',
             type: 'int',
-            isPrimary: true,
+            isPrimary: true
           },
           { name: 'name', type: 'varchar', length: '50' },
           { name: 'state_id', type: 'int' }
@@ -283,6 +283,7 @@ export class CreateTables1706358632771 implements MigrationInterface {
           { name: 'state', type: 'int' },
           { name: 'neighborhood', type: 'varchar', length: '100' },
           { name: 'zip_code', type: 'varchar', length: '10' },
+          { name: 'actived', type: 'boolean', default: true },
           { name: 'createdAt', type: 'timestamp', default: 'now()' }
         ],
         foreignKeys: [
