@@ -9,7 +9,7 @@ export interface ITransaction {
 }
 
 @Entity('transaction')
-export default class Transaction extends BaseEntity implements !Transaction {
+export default class Transaction extends BaseEntity implements ITransaction {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number
 
