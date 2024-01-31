@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es2021",
-    "module": "CommonJS",
-    "baseUrl": "src",
-    "outDir": "dist",
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "strict": true,  // Habilitar strict
+    "module": "commonjs",
     "esModuleInterop": true,
-    "experimentalDecorators": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "baseUrl": ".",
     "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
