@@ -16,6 +16,7 @@ export interface IStudent {
   id?: number
   name: string
   email: string
+  ra?: string
   cpf: string
   birthdate: Date
   whatsappNumber: string
@@ -24,6 +25,7 @@ export interface IStudent {
   number: string
   neighborhood: string
   zip_code: string
+  actived: boolean
   createdAt: Date
 }
 
@@ -38,7 +40,7 @@ export default class Student extends BaseEntity implements IStudent {
   @Column({ type: 'varchar', length: 320 })
   email: string
 
-  @Column({ type: 'varchar', length: 15, unique: true, nullable: false })
+  @Column({ type: 'varchar', length: 15, unique: true })
   ra: string
 
   @Column({ type: 'varchar', length: 14 })
@@ -47,10 +49,10 @@ export default class Student extends BaseEntity implements IStudent {
   @Column({ type: 'date' })
   birthdate: Date
 
-  @Column({ type: 'varchar', length: 15, nullable: true })
+  @Column({ type: 'varchar', length: 15 })
   whatsappNumber: string
 
-  @Column({ type: 'varchar', length: 15, nullable: true })
+  @Column({ type: 'varchar', length: 15 })
   contactNumber: string
 
   @Column({ type: 'varchar', length: 255 })
@@ -69,6 +71,9 @@ export default class Student extends BaseEntity implements IStudent {
 
   @Column({ type: 'varchar', length: 100 })
   neighborhood: string
+
+  @Column({ type: 'boolean', default: true })
+  actived: boolean
 
   @Column({ type: 'varchar', length: 10 })
   zip_code: string
