@@ -5,11 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node src/index.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "typeorm:migrate": "typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts",
-    "typeorm:revert": "typeorm-ts-node-commonjs migration:revert -d src/database/data-source.ts"
+    "typeorm:migrate": "typeorm-ts-node-commonjs migration:run -d src/database/databaseManager.ts",
+    "typeorm:revert": "typeorm-ts-node-commonjs migration:revert -d src/database/databaseManager.ts"
   },
   "author": "Fernando Porfirio",
   "license": "ISC",
