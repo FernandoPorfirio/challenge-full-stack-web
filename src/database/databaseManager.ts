@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { DataSource, DataSourceOptions } from 'typeorm'
-import { User, AccessLevel, Transaction } from "../modules/models";
+import { scanAndImportModels } from '../modules/models'
 
 class DatabaseManager {
   private datasourceOptions: DataSourceOptions
@@ -15,9 +15,10 @@ class DatabaseManager {
   }
 
   async initializeDataSource() {
+    const entities = await scanAndImportModels()
     this.dataSource = new DataSource({
       ...this.datasourceOptions,
-      entities: [User, AccessLevel, Transaction],
+      entities,
       migrations: []
     })
 

@@ -1,5 +1,38 @@
-import User from './user/user.model'
-import Transaction from './transaction/transaction.model'
-import AccessLevel from './accessLevel/accessLevel.model'
+import fs from 'fs/promises'
+import path from 'path'
 
-export{User,  Transaction,  AccessLevel}
+const baseDirectory = __dirname
+
+export async function scanAndImportModels(
+  directoryPath?: string
+): Promise<Function[]> {
+  try {
+    if (!directoryPath) {
+      directoryPath = baseDirectory
+    }
+    const entries = await fs.readdir(directoryPath)
+    const entities: Function[] = []
+
+    for (const entry of entries) {
+      const entryPath = path.join(directoryPath, entry)
+      const entryStat = await fs.stat(entryPath)
+      if (entryStat.isFile() && entry.endsWith('.model.ts')) {
+        const moduleExport = await import(entryPath)
+        if (
+          moduleExport.default &&
+          typeof moduleExport.default === 'function'
+        ) {
+          entities.push(moduleExport.default)
+        }
+      } else if (entryStat.isDirectory()) {
+        const subEntities = await scanAndImportModels(entryPath)
+        entities.push(...subEntities)
+      }
+    }
+
+    return entities
+  } catch (error) {
+    console.error('Error: Unable to import models!', error)
+    throw error
+  }
+}
