@@ -1,17 +1,7 @@
 import { createApp } from 'vue'
-import { createStore } from 'vuex'
+// import { createStore } from 'vuex'
 import App from './App.vue'
 import router from './router'
-import authModule from './store/auth';
-
-
-const store = createStore({
-  modules: {
-    auth: authModule,
-  }
-})
-
-store.dispatch('auth/loadAuthToken');
 
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -23,4 +13,4 @@ const vuetify = createVuetify({
   directives
 })
 
-createApp(App).use(vuetify).use(router).use(store).mount('#app')
+createApp(App).use(vuetify).use(router).mount('#app')
