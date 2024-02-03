@@ -1,7 +1,6 @@
 <template>
   <div>
-    <router-link :to="{ name: 'login' }">Login</router-link>
-    <router-link :to="{ name: 'student' }">Student</router-link>
+    <router-link :to="{ name: 'home' }">Home</router-link>
     <router-view />
   </div>
 </template>
