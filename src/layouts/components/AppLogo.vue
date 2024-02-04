@@ -1,10 +1,16 @@
 <template>
-  <v-img class="mx-auto my-6" max-width="228" :src="logoPath" alt="App Logo"></v-img>
+  <v-img class="mx-auto my-6" :max-width="maxWidth" :src="logoPath" alt="App Logo"></v-img>
 </template>
 
 <script>
 export default {
   name: 'AppLogo',
+  props: {
+    maxWidth: {
+      type: [String, Number],
+      default: 228
+    }
+  },
   data() {
     return {
       logoPath: null
