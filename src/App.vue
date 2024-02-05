@@ -5,11 +5,10 @@ export default {
 </script>
 
 <template>
-  <div>
-    <router-link :to="{ name: 'home' }">Home</router-link>
+  <v-app>
     <router-view />
     <SnackbarAlert />
-  </div>
+  </v-app>
 </template>
 
 <script setup lang="ts"></script>

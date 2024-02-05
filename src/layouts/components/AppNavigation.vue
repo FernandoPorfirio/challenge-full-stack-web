@@ -1,17 +1,14 @@
 <script>
-import AppLogo from './AppLogo.vue'
-
 export default {
-  components: {
-    AppLogo
+  props: {
+    drawer: Boolean,
+    links: Array
   }
 }
 </script>
 
 <template>
-  <div>
-    <AppLogo />
-  </div>
-</template>
+  <v-navigation-drawer app :value="drawer" @input="$emit('update:drawer', $event)">
 
-<style></style>
+  </v-navigation-drawer>
+</template>
