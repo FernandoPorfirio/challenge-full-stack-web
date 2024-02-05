@@ -1,16 +1,3 @@
-export const HOME = {
-  path: '/home',
-  children: [
-    {
-      path: '',
-      name: 'home',
-      meta: '',
-      component: () => import('@/views/HomeView.vue')
-    }
-  ],
-  component: () => import('@/layouts/DefaultLayout.vue')
-}
-
 export const LOGIN = {
   path: '/login',
   children: [
@@ -22,5 +9,18 @@ export const LOGIN = {
     }
   ],
   component: () => import('@/layouts/LoginLayout.vue')
+}
+
+export const HOME = {
+  path: '/home',
+  children: [
+    {
+      path: '',
+      name: 'home',
+      meta: '',
+      component: () => import('@/views/HomeView.vue')
+    }
+  ],
+  component: () => import('@/layouts/DefaultLayout.vue')
 }
 
