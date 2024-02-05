@@ -8,15 +8,17 @@ export default {
     UserInfo,
     AppLogo
   },
-  props: {
-    userData: Object
+  methods: {
+    toggleDrawer() {
+      this.$emit('toggle-drawer')
+    }
   }
 }
 </script>
 
 <template>
   <v-app-bar app>
-    <v-app-bar-nav-icon @click.stop="$emit('toggle-drawer')"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
     <app-logo :maxWidth="70" />
     <v-spacer></v-spacer>
     <user-info />
