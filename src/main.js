@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
 
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -25,4 +26,4 @@ app.config.globalProperties.$snackbar = SnackbarService
 
 app.component('SnackbarAlert', SnackbarAlert)
 
-app.use(vuetify).use(router).mount('#app')
+app.use(vuetify).use(router).use(store).mount('#app')
