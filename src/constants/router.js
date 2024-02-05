@@ -24,3 +24,41 @@ export const HOME = {
   component: () => import('@/layouts/DefaultLayout.vue')
 }
 
+export const STUDENT_LIST = {
+  path: '/studentList',
+  children: [
+    {
+      path: '',
+      name: 'studentList',
+      meta: '',
+      component: () => import('@/modules/student/views/StudentListView.vue')
+    }
+  ],
+  component: () => import('@/layouts/DefaultLayout.vue')
+}
+
+export const STUDENT_CREATE = {
+  path: '/studentCreate',
+  children: [
+    {
+      path: '',
+      name: 'studentCreate',
+      meta: '',
+      component: () => import('@/modules/student/views/StudentCreateView.vue')
+    }
+  ],
+  component: () => import('@/layouts/DefaultLayout.vue')
+}
+
+export const STUDENT_UPDATE = {
+  path: '/studentUpdate',
+  children: [
+    {
+      path: '',
+      name: 'studentUpdate',
+      meta: '',
+      component: () => import('@/modules/student/views/StudentUpdateView.vue')
+    }
+  ],
+  component: () => import('@/layouts/DefaultLayout.vue')
+}

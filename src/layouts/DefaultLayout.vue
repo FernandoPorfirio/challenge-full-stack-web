@@ -31,7 +31,7 @@ export default {
       drawer: true,
       links: [
         { text: 'Home', to: '/home', icon: 'mdi-home' },
-        { text: 'Student', to: '/student', icon: 'mdi-account' }
+        { text: 'Student', to: '/studentList', icon: 'mdi-account' }
       ]
     }
   },
