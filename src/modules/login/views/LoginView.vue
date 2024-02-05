@@ -1,6 +1,7 @@
 <script>
 import * as yup from 'yup'
 import AuthService from '../services.js'
+import { HOME } from '@/constants/router.js'
 
 export default {
   name: 'LoginView',
@@ -15,7 +16,18 @@ export default {
         email: yup.string().email('Invalid email address').required('Email is required'),
         password: yup.string().required('Password is required')
       }),
-      validationErrors: {}
+      validationErrors: {},
+      loading: false
+    }
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn
+    }
+  },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push(HOME.path)
     }
   },
   methods: {
@@ -24,6 +36,7 @@ export default {
         await this.validationSchema.validate(this.formData, { abortEarly: false })
         const { email, password } = this.formData
         await AuthService.login({ email, password })
+        this.$router.push(HOME.path)
       } catch (error) {
         if (error.name === 'ValidationError') {
           this.handleValidationErrors(error.errors)
