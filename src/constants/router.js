@@ -50,15 +50,3 @@ export const STUDENT_CREATE = {
   component: () => import('@/layouts/DefaultLayout.vue')
 }
 
-export const STUDENT_UPDATE = {
-  path: '/studentUpdate',
-  children: [
-    {
-      path: '',
-      name: 'studentUpdate',
-      meta: '',
-      component: () => import('@/modules/student/views/StudentUpdateView.vue')
-    }
-  ],
-  component: () => import('@/layouts/DefaultLayout.vue')
-}
