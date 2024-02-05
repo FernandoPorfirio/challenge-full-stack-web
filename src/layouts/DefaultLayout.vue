@@ -21,7 +21,7 @@ export default {
 
     <main>
       <AppContent>
-        <router-view></router-view>
+        <router-view />
       </AppContent>
     </main>
 

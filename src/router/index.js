@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import * as ROUTES from '@/constants/router'
+import {HOME} from '@/constants/router'
+
+import LoginRoutes from '@/modules/login/router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-      ROUTES.LOGIN,
-      ROUTES.STUDENT
+      HOME,
+      ... LoginRoutes
   ]
 })
 
