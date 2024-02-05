@@ -6,7 +6,11 @@ import { UnauthorizedError } from '../helper/api-error.helper'
 
 dotenv.config()
 
-export default function tokenValidation(req: Request, res: Response, next: NextFunction) {
+export default function tokenValidation(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const { authorization } = req.headers
 
   if (!authorization) {
