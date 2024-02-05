@@ -1,11 +1,19 @@
-// AuthService.js
-import http from '@/services/http';
+import http from '@/services/http'
 
-const AuthService = {
-  async login(userData) {
-      const response = await http.post('/auth', userData);
-      return response.data;
-  },
-};
+class AuthService {
+  login(user) {
+    return http.post('/auth', user).then((response) => {
+      if (response.data.token) {
+        localStorage.setItem('user', JSON.stringify(response.data))
+      }
 
-export default AuthService;
+      return response.data
+    })
+  }
+
+  logout() {
+    localStorage.removeItem('user')
+  }
+}
+
+export default new AuthService()
