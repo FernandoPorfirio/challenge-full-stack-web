@@ -1,7 +1,10 @@
 import { Request, Response } from 'express'
 
 import Student from './student.model'
-import { CreateStudentValidator, UpdateStudentValidator } from './student.validator'
+import {
+  CreateStudentValidator,
+  UpdateStudentValidator
+} from './student.validator'
 
 export default class StudentController {
   public async createStudent(req: Request, res: Response) {
@@ -42,7 +45,7 @@ export default class StudentController {
 
     const id: number = parseInt(req.params.id, 10)
 
-    const student = await Student.findOneBy({ id });
+    const student = await Student.findOneBy({ id })
 
     student.name = req.body.name
     student.email = req.body.email
@@ -64,7 +67,7 @@ export default class StudentController {
   public async deleteStudent(req: Request, res: Response) {
     const id: number = parseInt(req.params.id, 10)
 
-    const student = await Student.findOneBy({ id });
+    const student = await Student.findOneBy({ id })
 
     student.actived = false
 
