@@ -52,8 +52,8 @@ export default {
     },
     handleLoginError(error) {
       const errorMessage = error.response
-        ? `Erro: ${error.response.status} - ${error.response.data.message}`
-        : 'Erro desconhecido.'
+        ? `Error: ${error.response.status} - ${error.response.data.message}`
+        : 'Unknown error.'
 
       this.$snackbar.showSnackbar(errorMessage)
     }
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <template>
-  <form @submit.prevent="submitForm">
+  <v-form @submit.prevent="submitForm">
     <div class="text-subtitle-1 text-medium-emphasis">Account</div>
 
     <v-text-field
@@ -89,5 +89,5 @@ export default {
     ></v-text-field>
 
     <v-btn type="submit" block class="mb-8" color="blue" size="large" variant="tonal">Log In</v-btn>
-  </form>
+  </v-form>
 </template>
