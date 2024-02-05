@@ -1,4 +1,5 @@
 <script>
+import * as yup from 'yup'
 import AuthService from '../services.js'
 
 export default {
@@ -9,17 +10,32 @@ export default {
         visible: false,
         email: '',
         password: ''
-      }
+      },
+      validationSchema: yup.object().shape({
+        email: yup.string().email('Invalid email address').required('Email is required'),
+        password: yup.string().required('Password is required')
+      }),
+      validationErrors: {}
     }
   },
   methods: {
     async submitForm() {
-      const { email, password } = this.formData
       try {
+        await this.validationSchema.validate(this.formData, { abortEarly: false })
+        const { email, password } = this.formData
         await AuthService.login({ email, password })
       } catch (error) {
-        this.handleLoginError(error)
+        if (error.name === 'ValidationError') {
+          this.handleValidationErrors(error.errors)
+        } else {
+          this.handleLoginError(error)
+        }
       }
+    },
+    handleValidationErrors(errors) {
+      const errorMessage = errors.join(' - ')
+
+      this.$snackbar.showSnackbar(errorMessage)
     },
     handleLoginError(error) {
       const errorMessage = error.response
