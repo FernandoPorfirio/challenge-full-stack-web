@@ -16,8 +16,13 @@ export default {
   },
   methods: {
     async handleSubmit(formData) {
-      const response = await AuthService.login(formData)
-      console.log(response)
+      try {
+        await AuthService.login(formData)
+      } catch (error) {
+        this.$snackbar.showSnackbar(
+          `Erro: ${error.response.status} - ${error.response.data.message}`
+        )
+      }
     }
   }
 }
